@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav-bg {
+  background-color: #004680;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background-color: white;
+}
+
+.logo img {
+  max-width: 80%!important;
+  max-height: 80%!important;
+  width: auto;
+  height: auto;
+  vertical-align: middle;
+}
