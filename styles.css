@@ -6,6 +6,10 @@
 
 .nav-bg {
   background-color: #004680;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100%;
 }
 
 .logo {
@@ -16,9 +20,18 @@
 }
 
 .logo img {
-  max-width: 80%!important;
-  max-height: 80%!important;
-  width: auto;
-  height: auto;
-  vertical-align: middle;
+  /* max-width: 80%!important;
+  max-height: 80%!important; */
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  align-self: center;
+}
+
+#active-section {
+  color: white;
+}
+
+header {
+  margin-top: 76px;
 }
