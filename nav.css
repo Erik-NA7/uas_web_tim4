@@ -28,11 +28,46 @@
   align-self: center;
 }
 
-#active-section {
+.active-section {
   color: white;
   font-size: 28px;
 }
 
+#section-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-align: center;
+}
+
+@media (max-width: 375px) {
+  #section-title {
+    -webkit-line-clamp: 1;
+  }
+}
+
 header {
   margin-top: 76px;
+}
+
+.progress {
+  padding-bottom: 8px;
+  height: 100%;
+  background-color: transparent !important;
+}
+
+.canvas-container {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+#percentage {
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 5px));
 }
