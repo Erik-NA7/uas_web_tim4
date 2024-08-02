@@ -1,6 +1,20 @@
 window.onload = () => {
   let sectionTitle = document.getElementById('section-title');
-  const sections = document.querySelectorAll('section');
+  const sections = document.querySelectorAll('.accordion-item');
+  const sectionsHeader = document.querySelectorAll('.accordion-button');
+  
+  sectionsHeader.forEach((b, i) => {
+    if (i > 1) {
+      b.disabled = true;
+    }
+    b.addEventListener('click', () => {
+      const nextSectionToggle = sectionsHeader[i + 1];
+      if (nextSectionToggle) {
+        nextSectionToggle.disabled = false;
+      }
+    })
+  })
+  
   let percentage = document.getElementById('percentage');
   let progress = 0;
   let myChart = null;
@@ -35,7 +49,6 @@ window.onload = () => {
 
   const updateChart = (chart, progress, remaining) => {
     const prev = chart.data.datasets[0].data
-    console.log('prev cart data', prev)
     if (prev[0][0] === sections.length) return;
     
     chart.data.datasets[0].data = [progress, remaining];
@@ -44,18 +57,24 @@ window.onload = () => {
 
   function getActiveSection() {
     let visibleSection = null;
+    let toggle = null;
     sections.forEach((section, index) => {
-      const rects = section.getBoundingClientRect();
-      if (rects.top < 250 && rects.bottom > 250) {
-        visibleSection = section;
-        if (progress !== sections.length) {
-          progress = index + 1;
+      toggle = section.querySelector('.collapsed');
+      if (toggle === null) {
+        const rects = section.getBoundingClientRect();
+        if (rects.top < 250 && rects.bottom > 250) {
+          visibleSection = section;
+          if (progress !== sections.length) {
+            progress = index + 1;
+          }
         }
       }
     });
 
     if (visibleSection) {
-      sectionTitle.innerHTML = visibleSection.firstElementChild.textContent;
+      
+      sectionTitle.innerHTML = visibleSection.querySelector('.accordion-button').textContent;
+      ;
       percentage.innerHTML = Math.round((progress / sections.length) * 100) + '%';
     }
     updateChart(myChart, progress, sections.length - progress);
