@@ -3,17 +3,17 @@ window.onload = () => {
   const sections = document.querySelectorAll('.accordion-item');
   const sectionsHeader = document.querySelectorAll('.accordion-button');
   
-  sectionsHeader.forEach((b, i) => {
-    if (i > 1) {
-      b.disabled = true;
-    }
-    b.addEventListener('click', () => {
-      const nextSectionToggle = sectionsHeader[i + 1];
-      if (nextSectionToggle) {
-        nextSectionToggle.disabled = false;
-      }
-    })
-  })
+  // sectionsHeader.forEach((b, i) => {
+  //   if (i > 1) {
+  //     b.disabled = true;
+  //   }
+  //   b.addEventListener('click', () => {
+  //     const nextSectionToggle = sectionsHeader[i + 1];
+  //     if (nextSectionToggle) {
+  //       nextSectionToggle.disabled = false;
+  //     }
+  //   })
+  // })
   
   let percentage = document.getElementById('percentage');
   let progress = 0;
@@ -55,12 +55,32 @@ window.onload = () => {
     chart.update();
   }
 
+
+  function scrollToTarget(target) {
+    var targetPosition = target.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({
+      top: targetPosition - 100,
+      behavior: 'smooth',
+    });
+  }
+
+  const sidebarAnchors = document.querySelectorAll('.nav-link');
+  sidebarAnchors.forEach(s => {
+    s.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = s.getAttribute('href')
+      const section = document.getElementById(targetId.substring(1));
+      console.log(section)
+      scrollToTarget(section);
+    })
+  })
+
   function getActiveSection() {
     let visibleSection = null;
     let toggle = null;
     sections.forEach((section, index) => {
-      toggle = section.querySelector('.collapsed');
-      if (toggle === null) {
+      // toggle = section.querySelector('.collapsed');
+      // if (toggle === null) {
         const rects = section.getBoundingClientRect();
         if (rects.top < 250 && rects.bottom > 250) {
           visibleSection = section;
@@ -68,7 +88,7 @@ window.onload = () => {
             progress = index + 1;
           }
         }
-      }
+      // }
     });
 
     if (visibleSection) {
