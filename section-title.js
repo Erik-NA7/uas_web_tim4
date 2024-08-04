@@ -3,18 +3,6 @@ window.onload = () => {
   const sections = document.querySelectorAll('.accordion-item');
   const sectionsHeader = document.querySelectorAll('.accordion-button');
   
-  // sectionsHeader.forEach((b, i) => {
-  //   if (i > 1) {
-  //     b.disabled = true;
-  //   }
-  //   b.addEventListener('click', () => {
-  //     const nextSectionToggle = sectionsHeader[i + 1];
-  //     if (nextSectionToggle) {
-  //       nextSectionToggle.disabled = false;
-  //     }
-  //   })
-  // })
-  
   let percentage = document.getElementById('percentage');
   let progress = 0;
   let myChart = null;
@@ -78,8 +66,6 @@ window.onload = () => {
     let visibleSection = null;
     let toggle = null;
     sections.forEach((section, index) => {
-      // toggle = section.querySelector('.collapsed');
-      // if (toggle === null) {
         const rects = section.getBoundingClientRect();
         if (rects.top < 250 && rects.bottom > 250) {
           visibleSection = section;
@@ -87,7 +73,6 @@ window.onload = () => {
             progress = index + 1;
           }
         }
-      // }
     });
 
     if (visibleSection) {
