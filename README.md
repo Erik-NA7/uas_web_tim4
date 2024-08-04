@@ -11,5 +11,5 @@
 ## Excel: HTML
 ## Deny: CSS
 ## Erik: JavaScript
-## Rizqi: Video Production
+## Rizqi: Sidebar & Video Production
 ## All: Presentasi part-part video
