@@ -70,7 +70,6 @@ window.onload = () => {
       e.preventDefault();
       const targetId = s.getAttribute('href')
       const section = document.getElementById(targetId.substring(1));
-      console.log(section)
       scrollToTarget(section);
     })
   })
